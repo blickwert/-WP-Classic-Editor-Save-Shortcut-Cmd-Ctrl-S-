@@ -1,45 +1,52 @@
 # WP Classic Editor Save Shortcut
 
-Mappt **⌘S / Ctrl+S** im **WordPress Classic Editor** auf **Speichern/Aktualisieren/Veröffentlichen** – verhindert zugleich den Browser-Dialog „Seite speichern“.
+Maps **⌘S / Ctrl+S** in the **WordPress Classic Editor** to **Save / Update / Publish** – while preventing the browser’s default “Save Page” dialog.
+
+---
 
 ## Features
-- ⌘S (Mac) / Ctrl+S (Windows) löst **Speichern** aus
-- Bevorzugt **Entwurf speichern** (`#save-post`), fällt andernfalls auf **Aktualisieren/Veröffentlichen** (`#publish`) zurück
-- Kleiner Hinweistext unter den Publishing-Aktionen („Tipp: ⌘S/Ctrl+S …“)
-- Zero-Config, keine Settings. Kann via Filter deaktiviert werden.
+- ⌘S (Mac) / Ctrl+S (Windows) triggers **Save**
+- Prefers **Save Draft** (`#save-post`), falls back to **Update/Publish** (`#publish`) if not available
+- Small hint below the publishing actions (“Tip: ⌘S / Ctrl+S …”)
+- Zero-config, no settings required. Can be disabled via filter.
+
+---
 
 ## Installation
-1. Ordner erstellen: `wp-classic-editor-save-shortcut/`
-2. Datei `wp-classic-editor-save-shortcut.php` hinein kopieren (siehe oben)
-3. Ordner als ZIP packen und über **Plugins → Installieren → Plugin hochladen** einspielen
-4. Aktivieren. Fertig.
+1. Create a folder: `wp-classic-editor-save-shortcut/`
+2. Copy the file `wp-classic-editor-save-shortcut.php` into it (see above)
+3. Zip the folder and upload it via **Plugins → Add New → Upload Plugin**
+4. Activate – done ✅
 
-## Kompatibilität
-- Optimiert für den **Classic Editor** (klassische Bearbeitungsoberfläche). Funktioniert auf `post-new.php` und `post.php` – somit für Beiträge, Seiten und Custom Post Types.
-- Für den Block Editor (Gutenberg) ist bereits ein eigenes Shortcut-Verhalten vorhanden; dieses Plugin zielt explizit auf die klassische Oberfläche.
+---
 
-## Filter
-```php
-// Plugin global deaktivieren:
-add_filter( 'wcess_enable_shortcut', '__return_false' );
-```
-## Fragen und Antworten
+## Compatibility
+- Optimized for the **Classic Editor** UI. Works on `post-new.php` and `post.php` – covering posts, pages, and custom post types.  
+- The **Block Editor (Gutenberg)** already has its own shortcut behavior; this plugin is explicitly aimed at the Classic Editor interface.
 
-F: Kann ich erzwingen, dass immer „Entwurf speichern“ genutzt wird?
-A: Ja. Im Code einfach die Fallback-Logik für #publish entfernen.
+---
 
-F: Greift das auch, wenn der Cursor im Editor-Feld ist?
-A: Ja. Die Tastenkombination wird global abgefangen und der Browser-Dialog unterdrückt.
+## FAQ
 
-F: Funktioniert das mit allen Themes/Plugins?
-A: Solange die Standard-IDs #save-post / #publish vorhanden sind (Classic UI), ja.
+**Q: Can I force it to always use “Save Draft”?**  
+A: Yes. Just remove the fallback logic for `#publish` in the code.  
+
+**Q: Does it also work when the cursor is inside the editor field?**  
+A: Yes. The keyboard shortcut is intercepted globally and the browser dialog is suppressed.  
+
+**Q: Does it work with all themes/plugins?**  
+A: As long as the standard IDs `#save-post` / `#publish` are present (Classic UI), yes.  
+
+---
 
 ## Changelog
-1.0.0 Erste Veröffentlichung
+**1.0.0** – Initial release  
 
-## Lizenz
+---
 
-Dieses Plugin ist freie Software, veröffentlicht unter der
-GNU General Public License v2 oder später (GPL-2.0-or-later).
+## License
 
-Siehe: https://www.gnu.org/licenses/gpl-2.0.html
+This plugin is free software, released under the  
+**GNU General Public License v2 or later (GPL-2.0-or-later).**
+
+See: [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)
