@@ -1,62 +1,45 @@
-# WP Classic Editor – Save Shortcut (Cmd/Ctrl + S)
+# WP Classic Editor Save Shortcut
 
-Bringt dem **WordPress Classic Editor** die gewohnte `Cmd/Ctrl + S`-Speichern-Funktion bei.  
-Statt des Browser-Dialogs löst der Shortcut den **Speichern/Veröffentlichen/Aktualisieren**-Button im Classic Editor aus.
-
-> ✅ Funktioniert im Classic Editor (TinyMCE).  
-> ⚠️ Für den Block Editor (Gutenberg) ist dieses Plugin **nicht** gedacht.
-
----
+Mappt **⌘S / Ctrl+S** im **WordPress Classic Editor** auf **Speichern/Aktualisieren/Veröffentlichen** – verhindert zugleich den Browser-Dialog „Seite speichern“.
 
 ## Features
-
-- `Cmd + S` (macOS) / `Ctrl + S` (Windows) 👉 Klickt automatisch auf **Veröffentlichen/Aktualisieren**
-- `Cmd/Ctrl + Shift + S` 👉 versucht **Entwurf speichern** (`#save-post`), fällt sonst auf Veröffentlichen/Aktualisieren zurück
-- Greift **nur** auf `post-new.php` und `post.php` (Classic Editor) ein
-- Blockiert zuverlässig den Browser-Dialog „Seite speichern“
-
----
+- ⌘S (Mac) / Ctrl+S (Windows) löst **Speichern** aus
+- Bevorzugt **Entwurf speichern** (`#save-post`), fällt andernfalls auf **Aktualisieren/Veröffentlichen** (`#publish`) zurück
+- Kleiner Hinweistext unter den Publishing-Aktionen („Tipp: ⌘S/Ctrl+S …“)
+- Zero-Config, keine Settings. Kann via Filter deaktiviert werden.
 
 ## Installation
-
-1. Ordner anlegen: `wp-classic-save-shortcut/`
-2. Datei `wp-classic-save-shortcut.php` in diesen Ordner legen (siehe unten).
-3. Projekt in `wp-content/plugins/wp-classic-save-shortcut/` ablegen.
-4. Im WP-Admin unter **Plugins** aktivieren.
-
-> Alternativ als MU-Plugin: Datei nach `wp-content/mu-plugins/` legen, Name z. B. `wp-classic-save-shortcut.php` – aktiviert sich automatisch.
-
----
-
-## Nutzung
-
-- Im Classic Editor `Cmd/Ctrl + S` drücken → Beitrag wird **veröffentlicht/aktualisiert**.
-- Mit **Shift** zusätzlich (`Cmd/Ctrl + Shift + S`) → **Entwurf speichern** (falls Button vorhanden).
-
----
-
-## Einschränkungen
-
-- **Gutenberg/Block Editor** hat eigene Shortcuts und UI – hier greift das Plugin nicht.
-- Im Quick Draft Widget (Dashboard) derzeit **ohne** Funktion.
-
----
+1. Ordner erstellen: `wp-classic-editor-save-shortcut/`
+2. Datei `wp-classic-editor-save-shortcut.php` hinein kopieren (siehe oben)
+3. Ordner als ZIP packen und über **Plugins → Installieren → Plugin hochladen** einspielen
+4. Aktivieren. Fertig.
 
 ## Kompatibilität
+- Optimiert für den **Classic Editor** (klassische Bearbeitungsoberfläche). Funktioniert auf `post-new.php` und `post.php` – somit für Beiträge, Seiten und Custom Post Types.
+- Für den Block Editor (Gutenberg) ist bereits ein eigenes Shortcut-Verhalten vorhanden; dieses Plugin zielt explizit auf die klassische Oberfläche.
 
-- WordPress 5.2+ (getestet bis 6.6)
-- PHP 7.4 – 8.3
-- Classic Editor Plugin optional, aber empfohlen
+## Filter
+```php
+// Plugin global deaktivieren:
+add_filter( 'wcess_enable_shortcut', '__return_false' );
 
----
+## Fragen und Antworten
+
+F: Kann ich erzwingen, dass immer „Entwurf speichern“ genutzt wird?
+A: Ja. Im Code einfach die Fallback-Logik für #publish entfernen.
+
+F: Greift das auch, wenn der Cursor im Editor-Feld ist?
+A: Ja. Die Tastenkombination wird global abgefangen und der Browser-Dialog unterdrückt.
+
+F: Funktioniert das mit allen Themes/Plugins?
+A: Solange die Standard-IDs #save-post / #publish vorhanden sind (Classic UI), ja.
 
 ## Changelog
-
-### 1.0.0
-- Erste Veröffentlichung
-
----
+1.0.0 Erste Veröffentlichung
 
 ## Lizenz
 
-MIT
+Dieses Plugin ist freie Software, veröffentlicht unter der
+GNU General Public License v2 oder später (GPL-2.0-or-later).
+
+Siehe: https://www.gnu.org/licenses/gpl-2.0.html
