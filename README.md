@@ -22,7 +22,7 @@ Mappt **⌘S / Ctrl+S** im **WordPress Classic Editor** auf **Speichern/Aktualis
 ```php
 // Plugin global deaktivieren:
 add_filter( 'wcess_enable_shortcut', '__return_false' );
-
+```
 ## Fragen und Antworten
 
 F: Kann ich erzwingen, dass immer „Entwurf speichern“ genutzt wird?
